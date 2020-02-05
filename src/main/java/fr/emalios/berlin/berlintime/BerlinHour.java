@@ -1,10 +1,11 @@
 package fr.emalios.berlin.berlintime;
 
 import fr.emalios.berlin.Date;
+import fr.emalios.berlin.enums.LampNumber;
 import fr.emalios.berlin.enums.LampStringValue;
 import fr.emalios.berlin.value.Hours;
 
-public class BerlinHour
+public class BerlinHour implements BerlinTime
 {
 
     private Hours hours;
@@ -21,7 +22,7 @@ public class BerlinHour
         {
             builder.append(LampStringValue.RED_ON.toString());
         }
-        while(builder.length() < 4)
+        while(builder.length() < LampNumber.HOUR_LINE.getValue())
         {
             builder.append(LampStringValue.LAMP_OFF.toString());
         }
@@ -34,7 +35,7 @@ public class BerlinHour
         {
             builder.append(LampStringValue.RED_ON.toString());
         }
-        while(builder.length() < 4)
+        while(builder.length() < LampNumber.HOUR_LINE.getValue())
         {
             builder.append(LampStringValue.LAMP_OFF.toString());
         }
@@ -42,9 +43,7 @@ public class BerlinHour
     }
 
     @Override
-    public String toString() {
-        return firstLampLine()+"\n"+ secondLampLine();
+    public void display() {
+        System.out.println(firstLampLine()+"\n"+ secondLampLine());
     }
-
-
 }

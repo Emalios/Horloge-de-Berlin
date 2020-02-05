@@ -1,24 +1,25 @@
 package fr.emalios.berlin.berlintime;
 
 import fr.emalios.berlin.Date;
+import fr.emalios.berlin.enums.LampNumber;
 import fr.emalios.berlin.enums.LampStringValue;
 import fr.emalios.berlin.value.Minutes;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BerlinMinutes
+public class BerlinMinutes implements BerlinTime
 {
 
     private Minutes minutes;
     private List<Integer> yellowLampPlaceList;
-    private int[] yellowLampPlace = {1,2,4,5,7,8,10,11};
 
     public BerlinMinutes(Date date)
     {
         this.minutes = date.getMinutes();
         yellowLampPlaceList = new ArrayList<>();
-        setupArray(this.yellowLampPlace);
+        int[] yellowLampPlace = {1, 2, 4, 5, 7, 8, 10, 11};
+        setupArray(yellowLampPlace);
     }
 
     private void setupArray(int[] ints)
@@ -28,14 +29,14 @@ public class BerlinMinutes
         }
     }
 
-    public String firstLampLine()
+    private String firstLampLine()
     {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < this.minutes.numberOfFiveMinutes(); i++)
         {
             appendString(builder, i+1);
         }
-        while(builder.length() < 11)
+        while(builder.length() < LampNumber.FIRST_MINUTE_LINE.getValue())
         {
             builder.append(LampStringValue.LAMP_OFF.toString());
         }
@@ -54,22 +55,17 @@ public class BerlinMinutes
 
     private boolean isYellowLamp(int place)
     {
-        if (this.yellowLampPlaceList.contains(place))
-        {
-            //System.out.println("c'est un yello avec i = " + place);
-            return true;
-        }
-        return false;
+        return this.yellowLampPlaceList.contains(place);
     }
 
-    public String secondLine()
+    private String secondLine()
     {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < this.minutes.getMissingMinutes(); i++)
         {
             builder.append(LampStringValue.YELLOW_ON.toString());
         }
-        while(builder.length() < 4)
+        while(builder.length() < LampNumber.SECOND_MINUTE_LINE.getValue())
         {
             builder.append(LampStringValue.LAMP_OFF.toString());
         }
@@ -77,7 +73,7 @@ public class BerlinMinutes
     }
 
     @Override
-    public String toString() {
-        return firstLampLine()+"\n"+secondLine();
+    public void display() {
+        System.out.println(firstLampLine()+"\n"+secondLine());
     }
 }

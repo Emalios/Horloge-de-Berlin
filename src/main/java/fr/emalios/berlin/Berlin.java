@@ -9,9 +9,9 @@ public class Berlin
 
     public static void main(String[] args) {
        Date date = new Date("11:37:01");
-       System.out.println(new BerlinSecond(date).toString());
-       System.out.println(new BerlinHour(date).toString());
-       System.out.println(new BerlinMinutes(date).toString());
+       new BerlinSecond(date).display();
+       new BerlinHour(date).display();
+       new BerlinMinutes(date).display();
     }
 
 }

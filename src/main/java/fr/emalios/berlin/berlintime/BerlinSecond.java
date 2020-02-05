@@ -4,7 +4,7 @@ import fr.emalios.berlin.Date;
 import fr.emalios.berlin.enums.LampStringValue;
 import fr.emalios.berlin.value.Seconds;
 
-public class BerlinSecond
+public class BerlinSecond implements BerlinTime
 {
 
     private Seconds seconds;
@@ -15,12 +15,11 @@ public class BerlinSecond
     }
 
     @Override
-    public String toString() {
+    public void display() {
         if(this.seconds.isPair(seconds))
         {
-            return LampStringValue.SECOND_ON.toString();
+            System.out.println(LampStringValue.SECOND_ON.toString());
         }
-        return LampStringValue.LAMP_OFF.toString();
+        System.out.println(LampStringValue.LAMP_OFF.toString());
     }
-
 }
