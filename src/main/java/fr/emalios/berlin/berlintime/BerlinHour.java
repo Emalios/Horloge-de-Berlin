@@ -17,7 +17,7 @@ public class BerlinHour
     private String firstLampLine()
     {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < this.hours.numberOfFiveHour(); i++)
+        for (int i = 0; i < this.hours.numberOfFiveHours(); i++)
         {
             builder.append(LampStringValue.RED_ON.toString());
         }

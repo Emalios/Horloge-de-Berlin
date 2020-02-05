@@ -12,9 +12,10 @@ public class Minutes
     public Minutes(char[] minutes)
     {
         this.stringMinutes = Utils.boardToString(minutes);
+        this.intMinutes = Integer.parseInt(this.stringMinutes);
     }
 
-    public int numberOfFiveHour()
+    public int numberOfFiveMinutes()
     {
         int i = 0;
         while (i*5 <= intMinutes)
@@ -32,4 +33,5 @@ public class Minutes
     public int getMissingMinutes() {
         return missingMinutes;
     }
+
 }

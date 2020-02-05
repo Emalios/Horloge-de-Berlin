@@ -16,7 +16,7 @@ public class Hours
         this.intHours = Integer.parseInt(this.stringHours);
     }
 
-    public int numberOfFiveHour()
+    public int numberOfFiveHours()
     {
         int i = 0;
         while (i*5 <= intHours)
